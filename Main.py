@@ -40,13 +40,10 @@ for i in range(0, df.shape[0]):
     if np.isnan(df.loc[i, "Age"]):
         nan_total += 1
     else:
-        if int(df.loc[i, "Age"]/interval) == 0:
-            age[int(df.loc[i, "Age"]/interval)] += 1
+        if df.loc[i, "Age"]%interval == 0:
+            age[int(df.loc[i, "Age"]/interval)-1] += 1
         else:
-            if df.loc[i, "Age"]%interval == 0:
-                age[int(df.loc[i, "Age"]/interval)-1] += 1
-            else:
-                age[int(df.loc[i, "Age"]/interval)] += 1
+            age[int(df.loc[i, "Age"]/interval)] += 1
 
 print(age, nan_total)
 
