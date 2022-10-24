@@ -17,7 +17,7 @@ for i in range(0, df.shape[0]):
         female += 1
 print(male, female)
 
-
+'''
 #Find max age
 #For calculate the interval
 max = 0
@@ -30,10 +30,16 @@ for i in range(0, df.shape[0]):
         min = df.loc[i, "Age"]
         min_i = df.loc[i, "Age"]
 print(max, min)
-        
-    
-'''
+'''     
+
 #Number of people in each age group
+age = np.zeros(21)
+nan_total = 0 #How many people are unknown
 for i in range(0, df.shape[0]):
     interval = 80/20
-'''
+    if np.isnan(df.loc[i, "Age"]):
+        nan_total += 1
+    else:
+        age[int(df.loc[i, "Age"]/interval)] += 1
+
+print(age, nan_total)
