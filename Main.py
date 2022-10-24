@@ -49,3 +49,9 @@ for i in range(0, df.shape[0]):
                 age[int(df.loc[i, "Age"]/interval)] += 1
 
 print(age, nan_total)
+
+#Number of survivors and victims in each Pclass
+pclass = [[0, 0], [0, 0], [0, 0]] #3Pclass. Every have victims and survivors
+for i in range(0, df.shape[0]):
+    pclass[int(df.loc[i, "Pclass"])-1][int(df.loc[i, "Survived"])] += 1
+print(pclass)
