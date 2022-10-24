@@ -33,13 +33,19 @@ print(max, min)
 '''     
 
 #Number of people in each age group
-age = np.zeros(21)
+age = np.zeros(20)
+interval = 80/20
 nan_total = 0 #How many people are unknown
 for i in range(0, df.shape[0]):
-    interval = 80/20
     if np.isnan(df.loc[i, "Age"]):
         nan_total += 1
     else:
-        age[int(df.loc[i, "Age"]/interval)] += 1
+        if int(df.loc[i, "Age"]/interval) == 0:
+            age[int(df.loc[i, "Age"]/interval)] += 1
+        else:
+            if df.loc[i, "Age"]%interval == 0:
+                age[int(df.loc[i, "Age"]/interval)-1] += 1
+            else:
+                age[int(df.loc[i, "Age"]/interval)] += 1
 
 print(age, nan_total)
