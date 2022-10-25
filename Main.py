@@ -14,8 +14,7 @@ nan_total = 0 #How many people are unknown
 pclass = [[0, 0], [0, 0], [0, 0]] #3Pclass. Every have victims and survivors
 
 #Base figure
-fig, axes = plt.subplots(2, 2)
-plt.show()
+fig, axes = plt.subplots(2,2) #2rows, 2columns
 
 for i in range(0, df.shape[0]):
     
@@ -36,6 +35,11 @@ for i in range(0, df.shape[0]):
             
     #Number of survivors and victims in each Pclass
     pclass[int(df.loc[i, "Pclass"])-1][int(df.loc[i, "Survived"])] += 1
+
+#Draw Male/Female figure
+axes[0][0].bar([1, 2], [male, female], tick_label=['male', 'female'])
+plt.show()
+
 
 #print(male, female)
 #print(age, nan_total)
