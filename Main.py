@@ -39,6 +39,12 @@ for i in range(0, df.shape[0]):
     #pclass[1+(int(df.loc[i, "Pclass"])-1)*2+int(df.loc[i, "Survived"])-1] += 1
     #pclass[int(df.loc[i, "Pclass"])-1][int(df.loc[i, "Survived"])] += 1
     pclass[int(df.loc[i, "Survived"])][int(df.loc[i, "Pclass"])-1] += 1
+    
+    #Draw the relationship between money and life
+    if int(df.loc[i, "Survived"]) == 0: #Dead
+        axes[1][1].scatter(df.loc[i, "Age"], df.loc[i, "Fare"], c = 'orangered', marker='x', label='Dead')
+    elif int(df.loc[i, "Survived"]) == 1: #Live
+        axes[1][1].scatter(df.loc[i, "Age"], df.loc[i, "Fare"], c = 'steelblue', marker='s', label='Live')
 
 #Draw Male/Female figure
 axes[0][0].bar([1, 2], [male, female], tick_label=['male', 'female'])
