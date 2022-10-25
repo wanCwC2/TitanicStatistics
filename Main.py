@@ -38,6 +38,10 @@ for i in range(0, df.shape[0]):
 
 #Draw Male/Female figure
 axes[0][0].bar([1, 2], [male, female], tick_label=['male', 'female'])
+
+#Draw age interval figure
+axes[0][1].bar([i for i in range(0, 80, int(interval))], age)
+
 plt.show()
 
 
