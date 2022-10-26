@@ -16,10 +16,7 @@ r_dead = [[], []] #relationship between money and life, dead
 r_live = [[], []] #relationship between money and life, live
 
 #Base figure
-fig, axes = plt.subplots(2, 2) #2rows, 2columns
-#axes[0][0].axis(0, 600, 'square')
-#axes.set(adjustable='box-forced', aspect='equal')
-axes[0][0].set_adjustable('box')
+fig, axes = plt.subplots(2, 2) #2columns, 2rows
 
 for i in range(0, df.shape[0]):
     
@@ -71,7 +68,6 @@ axes[1][1].scatter(r_dead[0], r_dead[1], marker='x', label='Dead')
 axes[1][1].scatter(r_live[0], r_live[1], marker='s', label='Live')
 
 plt.show()
-
 
 #print(male, female)
 #print(age, nan_total)
