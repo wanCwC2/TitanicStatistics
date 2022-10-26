@@ -16,7 +16,10 @@ r_dead = [[], []] #relationship between money and life, dead
 r_live = [[], []] #relationship between money and life, live
 
 #Base figure
-fig, axes = plt.subplots(2,2) #2rows, 2columns
+fig, axes = plt.subplots(2, 2) #2rows, 2columns
+#axes[0][0].axis(0, 600, 'square')
+#axes.set(adjustable='box-forced', aspect='equal')
+axes[0][0].set_adjustable('box')
 
 for i in range(0, df.shape[0]):
     
@@ -47,19 +50,23 @@ for i in range(0, df.shape[0]):
         r_live[1].append(df.loc[i, "Fare"])
 
 #Draw Male/Female figure
+axes[0][0].set_yticks([0, 100, 200, 300, 400, 500, 600]) #set axis scales
 axes[0][0].bar([1, 2], [male, female], tick_label=['male', 'female'])
 
 #Draw age interval figure
+axes[0][1].set_yticks([0, 20, 40, 60, 80, 100]) #set axis scales
 axes[0][1].bar([i for i in range(0, 80, int(interval))], age, width = interval)
 
 #Draw survivors/victims figure
-x = [1, 2, 3]
+axes[1][0].set_yticks([0, 50, 100, 150, 200, 250, 300, 350]) #set axis scales
+x = [1, 2, 3] #x coordinate
 width = 0.4
 axes[1][0].bar(x ,pclass[0], width = width, tick_label=['PClass1', 'PClass2', 'PClass3'], label = 'Dead')
 x2 = [num + width for num in x]
 axes[1][0].bar(x2 ,pclass[1], width = width, label = 'Live')
 
 #Draw the relationship between money and life
+axes[1][1].set_yticks([0, 100, 200, 300, 400, 500]) #set axis scales
 axes[1][1].scatter(r_dead[0], r_dead[1], marker='x', label='Dead')
 axes[1][1].scatter(r_live[0], r_live[1], marker='s', label='Live')
 
